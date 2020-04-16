@@ -5,6 +5,11 @@
  */
 package javaapplication;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
+import javax.swing.UIManager;
+
 /**
  *
  * @author Andrey Shtunder 
@@ -15,7 +20,18 @@ public class NewJFrame extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public NewJFrame() {
+        try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        
+        } catch (Exception e) {}
+        
         initComponents();
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = getSize();
+        setLocation(new Point((screenSize.width - frameSize.width)/2,
+                (screenSize.height - frameSize.width)/2)
+        );
     }
 
     /**
